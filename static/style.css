@@ -1,0 +1,23 @@
+#digitado{
+    text-align: end;
+    padding-right: 8vw;
+}
+
+#resposta{
+    text-align: start;
+    padding-left: 8vw;
+}
+
+#chat{
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    padding-bottom: 1vw;
+}
+
+#chat-form{
+    display: flex;
+    gap: 1vw;
+    padding: 0vw 1vw 0vw 1vw;
+}

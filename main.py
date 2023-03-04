@@ -10,27 +10,19 @@ cursor = conexao.cursor()
 
 # criando tabela para armazenar dados
 cursor.execute("CREATE TABLE IF NOT EXISTS chatbot (frase text, resposta text)")
-
-# def responder_bot(frase):
-#     # buscando frase e resposta no banco de dados
-#     cursor.execute("SELECT resposta FROM chatbot WHERE frase LIKE ola?", (frase,))
-#     resultado = cursor.fetchone()
-
-#     # caso a frase não exista no banco de dados
-#     if resultado is None:
-#         # salva a frase e a resposta do usuário
-#         resposta = input('Digite a resposta: ')
-#         cursor.execute("INSERT INTO chatbot VALUES (?, ?)", (frase, resposta))
-#         conexao.commit()
-
-#         return resposta
-#     else:
-#         return resultado[0]
+conexao.close()
 
 def responder_bot(frase):
     # buscando frase e resposta no banco de dados
+    conexao = sqlite3.connect('banco.db')
+    print('Conectado ao banco de dados')
+    cursor = conexao.cursor()
     cursor.execute("SELECT resposta FROM chatbot WHERE frase LIKE ?", (frase,))
     resultado = cursor.fetchone()
+    
+
+    if resultado is not None:
+        return resultado[0]
 
     # caso a frase não exista no banco de dados
     if resultado is None:
@@ -49,6 +41,7 @@ def responder_bot(frase):
         # salva a frase e a resposta do usuário
         cursor.execute("INSERT INTO chatbot VALUES (?, ?)", (frase, resposta_mais_parecida))
         conexao.commit()
+        conexao.close()
 
         return resposta_mais_parecida
     else:
@@ -56,9 +49,7 @@ def responder_bot(frase):
 
 
 # loop para continuar o chat
-while True:
-    frase = input('Digite uma frase: ')
-    resposta = responder_bot(frase)
-    print('Bot:', resposta)
-
-conexao.close()
+#while True:
+#    frase = input('Digite uma frase: ')
+#    resposta = responder_bot(frase)
+#    print('Bot:', resposta)

@@ -1,0 +1,23 @@
+{% extends "template.html" %}
+{% block conteudo %}
+
+
+<div id="digitado" class="alert alert-primary">
+    <p>String digitada: {{ string_digitada }}</p>
+</div>
+<div id="resposta" class="alert alert-success">
+    <p>String resposta: {{ string_resposta }}</p>
+</div>
+
+<div id="chat">
+    <form action="/receber_string" method="post">
+        <div class="form-group" id="chat-form">
+            <input type="text" class="form-control" name="string_digitada" id="string_digitada" placeholder="Mensagem">
+            <input type="submit" class="btn btn-primary" value="Enviar mensagem">
+        </div>
+    </form>
+</div>
+
+
+
+{% endblock %}
