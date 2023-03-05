@@ -1,11 +1,33 @@
+body{
+    background-color: #202125;
+}
+
+p, h1{
+    margin: 0;
+}
+
 #digitado{
+    display: flex;
     text-align: end;
-    padding-right: 8vw;
+    padding-right: 2vw;
+    align-items: center;
+    align-self: flex-end;
+    gap: 1vw;
+    min-height: 100px;
+    max-width: 50vw;
+    overflow-wrap: anywhere;
 }
 
 #resposta{
+    display: flex;
     text-align: start;
-    padding-left: 8vw;
+    padding-left: 2vw;
+    align-items: center;
+    align-self: flex-start;
+    gap: 1vw;
+    min-height: 100px;
+    max-width: 50vw;
+    overflow-wrap: anywhere;
 }
 
 #chat{
@@ -20,4 +42,18 @@
     display: flex;
     gap: 1vw;
     padding: 0vw 1vw 0vw 1vw;
+}
+
+#conversas{
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    padding: 1vw 1vw 1vw 1vw;
+}
+
+#corrigir-resposta{
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    padding: 1vw 1vw 1vw 1vw;
 }

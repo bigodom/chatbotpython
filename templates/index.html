@@ -1,16 +1,31 @@
 {% extends "template.html" %}
 {% block conteudo %}
 
-
-<div id="digitado" class="alert alert-primary">
-    <p>String digitada: {{ string_digitada }}</p>
-</div>
-<div id="resposta" class="alert alert-success">
-    <p>String resposta: {{ string_resposta }}</p>
+<div id="conversas">
+    <div id="digitado" class="alert alert-primary">
+        <p name="teste">{{ string_digitada }}</p>
+        <h1>🧑</h1>
+    </div>
+    <div style="display: flex;">
+        <div id="resposta" class="alert alert-success">
+            <h1>🤖</h1>
+            <p style="margin: 0;">{{ string_resposta }}</p>
+        </div>
+        <div id="corrigir-resposta">
+            <form action="/corrigir_string" method="get">
+                <div class="form-group" id="chat-form">
+                    <label for="string_digitada"></label>
+                    <input type="text" id="string_digitada" name="string_digitada" value="{{string_digitada}}" style="display: none;" readonly>
+                    <input style="width: fit-content;" type="text" class="form-control" name="string_corrigida" id="string_corrida" placeholder="Corrigir resposta">
+                    <input style="width: fit-content; align-self: center;" type="submit" class="btn btn-primary" value="Corrigir resposta">
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 <div id="chat">
-    <form action="/receber_string" method="post">
+    <form action="/receber_string" method="get">
         <div class="form-group" id="chat-form">
             <input type="text" class="form-control" name="string_digitada" id="string_digitada" placeholder="Mensagem">
             <input type="submit" class="btn btn-primary" value="Enviar mensagem">

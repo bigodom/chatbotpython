@@ -47,6 +47,21 @@ def responder_bot(frase):
     else:
         return resultado[0]
 
+def deletar_frase(frase_deletar):
+    conexao = sqlite3.connect('banco.db')
+    cursor = conexao.cursor()
+    cursor.execute("DELETE FROM chatbot WHERE frase = ?", (frase_deletar,))
+    conexao.commit()
+    conexao.close()
+
+def treinar_bot_individual(frase_antiga, resposta_nova):
+    conexao = sqlite3.connect('banco.db')
+    cursor = conexao.cursor()
+    frase = frase_antiga
+    resposta = resposta_nova
+    cursor.execute("INSERT INTO chatbot VALUES (?, ?)", (frase, resposta))
+    conexao.commit()
+    conexao.close()
 
 # loop para continuar o chat
 #while True:
