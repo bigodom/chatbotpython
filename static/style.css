@@ -57,3 +57,19 @@ p, h1{
     gap: 1vw;
     padding: 1vw 1vw 1vw 1vw;
 }
+
+#resposta-correcao{
+    display: flex;
+}
+
+@media (max-width: 700px) {
+    #resposta-correcao{
+        flex-direction: column;
+    }
+    #digitado{
+        max-width: 90vw;
+    }
+    #resposta{
+        max-width: 90vw;
+    }
+}
